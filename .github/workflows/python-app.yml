@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Install Flask and run the app
+      run: |
+        make install  # Run the make install command to install dependencies
+        make run  # Run the Flask application
+
+    - name: Run tests (if any tests exist)
+      run: |
+        # Example test, adjust based on your tests
+        # pytest tests/  # Uncomment this if you have pytest configured
+        echo "No tests defined yet"  # Placeholder for future tests
+
+    - name: Stop Flask after job completes
+      if: always()
+      run: |
+        pkill -f "flask run"  # Ensures the Flask process is stopped after workflow completes
