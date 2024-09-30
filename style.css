@@ -1,0 +1,17 @@
+#plot {
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+    border: 1px solid #ccc;  /* Add a border to make the plot area more distinct */
+    cursor: crosshair;       /* Change cursor when in manual mode for point selection */
+}
+
+.centroid-point {
+    fill: red;               /* Style manually selected centroids in red */
+    stroke: black;           /* Add a black outline to make centroids more visible */
+    stroke-width: 2px;
+}
+
+.point {
+    fill: blue;              /* Style data points in blue */
+}

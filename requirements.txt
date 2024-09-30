@@ -1,0 +1,6 @@
+Flask
+numpy
+matplotlib
+Pillow
+flask-cors
+plotly
